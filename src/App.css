@@ -1,4 +1,3 @@
-/* General body and root styles */
 body, html {
   margin: 0;
   padding: 0;
@@ -7,7 +6,7 @@ body, html {
   background-color: #000;
   color: #fff;
   font-family: 'Bitcount Prop Single', monospace;
-  overflow: hidden; /* Hide scrollbars */
+  overflow: hidden;
 }
 
 #root, .App {
@@ -16,7 +15,6 @@ body, html {
   position: relative;
 }
 
-/* Header styles */
 .App-header {
   position: absolute;
   top: 0;
@@ -33,7 +31,6 @@ body, html {
   color: #fff;
 }
 
-/* Drawer selector styles */
 .drawer-selector {
   position: absolute;
   top: 80px;
@@ -62,12 +59,12 @@ body, html {
 }
 
 .drawer-selector button:disabled {
-  background: #00FFFF;
+  background: #FFA500;
   color: #000;
   cursor: not-allowed;
+  font-weight: bold;
 }
 
-/* Start screen styles */
 .start-screen {
   display: flex;
   flex-direction: column;
@@ -83,7 +80,7 @@ body, html {
 }
 
 .start-screen button {
-  background: #00FFFF;
+  background: #FFA500;
   color: #000;
   border: none;
   padding: 15px 30px;
@@ -94,10 +91,9 @@ body, html {
 }
 
 .start-screen button:hover {
-  background: #00b3b3;
+  background: #CC8400;
 }
 
-/* Main content and visualizer */
 main {
   width: 100%;
   height: 100%;
@@ -106,22 +102,47 @@ main {
   left: 0;
 }
 
-/* Stop button */
-.stop-button {
+.control-buttons {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background: rgba(255, 0, 0, 0.5);
-  border: 1px solid rgba(255, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.control-buttons button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  z-index: 10;
 }
 
-.stop-button:hover {
+.control-buttons button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.control-buttons button:last-child {
+  background: rgba(255, 0, 0, 0.5);
+  border: 1px solid rgba(255, 0, 0, 0.7);
+}
+
+.control-buttons button:last-child:hover {
   background: rgba(255, 0, 0, 0.7);
-}}7);
+}
+
+.unobtrusive-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7em;
+}
+
+.unobtrusive-button:hover {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
 }

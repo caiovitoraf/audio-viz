@@ -10,7 +10,7 @@ export function draw(context, frequencyData, waveformData, canvasWidth, canvasHe
     let barHeight;
     let x = 0;
 
-    context.fillStyle = '#00FFFF';
+    context.fillStyle = '#FFA500';
 
     for (let i = 0; i < frequencyData.length; i++) {
         barHeight = frequencyData[i];

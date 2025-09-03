@@ -2,8 +2,6 @@ import React, { useRef, useEffect } from 'react';
 
 const VisualizerRenderer = ({ audioData, drawer }) => {
     const canvasRef = useRef(null);
-
-    
     useEffect(() => {
         const canvas = canvasRef.current;
         const resizeCanvas = () => {

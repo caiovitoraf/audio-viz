@@ -11,6 +11,7 @@ const drawers = [barsDrawer, waveDrawer, circleDrawer];
 function App() {
   const { audioData, isCapturing, startAudioCapture, stopAudioCapture } = useAudioEngine();
   const [activeDrawer, setActiveDrawer] = useState(drawers[0]);
+  const [showUI, setShowUI] = useState(true);
 
   return (
     <div className="App">
@@ -18,7 +19,7 @@ function App() {
         <h1 className="logo">AudioViz</h1>
       </header>
 
-      {isCapturing && (
+      {isCapturing && showUI && (
         <div className="drawer-selector">
           {drawers.map((drawer, index) => (
             <button key={index} onClick={() => setActiveDrawer(drawer)} disabled={drawer === activeDrawer}>
@@ -32,7 +33,7 @@ function App() {
         {!isCapturing ? (
           <div className="start-screen">
             <p>Select your screen to start the audio visualization</p>
-            <button onClick={startAudioCapture}>Start</button>
+            <button onClick={startAudioCapture}>Start Capture</button>
           </div>
         ) : (
           <VisualizerRenderer audioData={audioData} drawer={activeDrawer} />
@@ -40,7 +41,14 @@ function App() {
       </main>
 
       {isCapturing && (
-        <button className="stop-button" onClick={stopAudioCapture}>Stop Capture</button>
+        <div className="control-buttons">
+          <button onClick={() => setShowUI(!showUI)} className={!showUI ? 'unobtrusive-button' : ''}>
+            {showUI ? 'Hide UI' : 'Show UI'}
+          </button>
+          {showUI && (
+            <button onClick={stopAudioCapture}>Stop Capture</button>
+          )}
+        </div>
       )}
     </div>
   );
