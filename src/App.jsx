@@ -6,7 +6,7 @@ import * as waveDrawer from './drawers/wave.js';
 import * as circleDrawer from './drawers/circle.js';
 import './App.css';
 
-const drawers = [barsDrawer, waveDrawer, circleDrawer];
+const drawers = [barsDrawer, waveDrawer];
 
 function App() {
   const { audioData, isCapturing, startAudioCapture, stopAudioCapture } = useAudioEngine();

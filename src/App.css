@@ -126,6 +126,7 @@ main {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 1em; /* Added this line */
 }
 
 .control-buttons button:hover {
@@ -145,7 +146,7 @@ main {
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.3);
-  font-size: 0.7em;
+  /* Removed font-size: 0.7em; */
 }
 
 .unobtrusive-button:hover {
