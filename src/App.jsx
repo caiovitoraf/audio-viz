@@ -12,6 +12,19 @@ function App() {
   const { audioData, isCapturing, startAudioCapture, stopAudioCapture } = useAudioEngine();
   const [activeDrawer, setActiveDrawer] = useState(drawers[0]);
   const [showUI, setShowUI] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(() => {
+        setIsFullscreen(true);
+      });
+    } else {
+      document.exitFullscreen().then(() => {
+        setIsFullscreen(false);
+      });
+    }
+  };
 
   return (
     <div className="App">
@@ -32,8 +45,9 @@ function App() {
       <main>
         {!isCapturing ? (
           <div className="start-screen">
-            <p>Select your screen to start the audio visualization</p>
+            <p>Select your tab to start the audio visualization</p>
             <button onClick={startAudioCapture}>Start Capture</button>
+            <p className="low-opacity-text">Works better on Chrome</p>
           </div>
         ) : (
           <VisualizerRenderer audioData={audioData} drawer={activeDrawer} />
@@ -42,6 +56,9 @@ function App() {
 
       {isCapturing && (
         <div className="control-buttons">
+          <button onClick={toggleFullscreen}>
+            {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+          </button>
           <button onClick={() => setShowUI(!showUI)} className={!showUI ? 'unobtrusive-button' : ''}>
             {showUI ? 'Hide UI' : 'Show UI'}
           </button>
