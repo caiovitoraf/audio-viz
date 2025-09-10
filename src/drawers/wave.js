@@ -3,11 +3,11 @@ export const config = {
     author: "User",
 };
 
-export function draw(context, frequencyData, waveformData, canvasWidth, canvasHeight) {
+export function draw(context, frequencyData, waveformData, canvasWidth, canvasHeight, fillColor) { // Added fillColor
     context.clearRect(0, 0, canvasWidth, canvasHeight);
 
     context.lineWidth = 2;
-    context.strokeStyle = '#FFA500';
+    context.strokeStyle = fillColor; // Used fillColor
 
     context.beginPath();
 

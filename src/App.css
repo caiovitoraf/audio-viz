@@ -31,40 +31,6 @@ body, html {
   color: #fff;
 }
 
-.drawer-selector {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.drawer-selector button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.drawer-selector button:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.drawer-selector button:disabled {
-  background: #FFA500;
-  color: #000;
-  cursor: not-allowed;
-  font-weight: bold;
-}
-
 .start-screen {
   display: flex;
   flex-direction: column;
@@ -108,6 +74,82 @@ main {
   left: 0;
 }
 
+.controls-container {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.drawer-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.drawer-selector button,
+.color-picker-button,
+.color-option-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1em;
+  outline: none;
+}
+
+.drawer-selector button:hover,
+.color-picker-button:hover,
+.color-option-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.drawer-selector button:disabled,
+.color-option-button.selected {
+  background: #FFA500;
+  color: #000;
+  cursor: not-allowed;
+  font-weight: bold;
+}
+
+.color-picker-container {
+  position: relative;
+}
+
+.color-options {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 11;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.color-options.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
 .control-buttons {
   position: absolute;
   bottom: 20px;
@@ -126,27 +168,17 @@ main {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  font-size: 1em; /* Added this line */
+  font-size: 1em;
 }
 
 .control-buttons button:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.control-buttons button:last-child {
-  background: rgba(255, 0, 0, 0.5);
-  border: 1px solid rgba(255, 0, 0, 0.7);
-}
-
-.control-buttons button:last-child:hover {
-  background: rgba(255, 0, 0, 0.7);
-}
-
 .unobtrusive-button {
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.3);
-  /* Removed font-size: 0.7em; */
 }
 
 .unobtrusive-button:hover {

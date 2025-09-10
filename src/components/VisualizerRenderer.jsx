@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
+import { getRainbowGradient, getOrangeColor, getWhiteColor } from '../utils/colorPalettes'; // New import
 
-const VisualizerRenderer = ({ audioData, drawer }) => {
+const VisualizerRenderer = ({ audioData, drawer, activeColorPalette }) => { // Added activeColorPalette
     const canvasRef = useRef(null);
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -22,7 +23,16 @@ const VisualizerRenderer = ({ audioData, drawer }) => {
 
         const render = () => {
             if (drawer && frequencyData && waveformData) {
-                drawer.draw(context, frequencyData, waveformData, canvas.width, canvas.height);
+                let fillColor;
+                if (activeColorPalette === 'rainbow') {
+                    fillColor = getRainbowGradient(context, canvas.width, canvas.height, frequencyData);
+                } else if (activeColorPalette === 'orange') {
+                    fillColor = getOrangeColor();
+                } else if (activeColorPalette === 'white') {
+                    fillColor = getWhiteColor();
+                }
+
+                drawer.draw(context, frequencyData, waveformData, canvas.width, canvas.height, fillColor); // Added fillColor
             }
             animationFrameId = requestAnimationFrame(render);
         };

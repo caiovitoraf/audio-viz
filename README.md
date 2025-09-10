@@ -1,12 +1,39 @@
-# React + Vite
+# AudioViz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AudioViz is a web application that provides a simple collection of real-time audio visualizers. Its modular and extensible architecture allows new visualization styles to be added as independent "plugins" without altering the core of the application.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Test the application at the following link: [https://audio-viz-lake.vercel.app/](https://audio-viz-lake.vercel.app/)
 
-## Expanding the ESLint configuration
+## How it works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The application is divided into three main logical layers:
+
+1.  **The Audio Engine (`AudioEngine`)**: Manages the entire audio lifecycle, including capturing audio, creating and managing the `AudioContext` and `AnalyserNode`, and running the main animation loop.
+2.  **The Renderer (`VisualizerRenderer.jsx`)**: Manages the `<canvas>` element and orchestrates the drawing, calling the drawing function of the active visualizer module in each frame of the loop.
+3.  **The Visualization Modules ("Drawers")**: Contain the drawing logic for a single visual style, each exporting a `draw` function that follows a predefined contract.
+
+## Tech Stack, Libraries, and Modules
+
+*   **React**: for building the user interface.
+*   **Vite**: for the development and build environment.
+*   **ESLint**: for code linting.
+*   **`getDisplayMedia`**: for audio capture.
+*   **`AudioContext`** and **`AnalyserNode`**: for audio analysis.
+*   **`requestAnimationFrame`**: for smooth and efficient animations.
+
+## How to Run the Project Locally
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/caiovitoraf/audioviz.git
+    ```
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```

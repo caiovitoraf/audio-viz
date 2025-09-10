@@ -3,14 +3,14 @@ export const config = {
     author: "User",
 };
 
-export function draw(context, frequencyData, waveformData, canvasWidth, canvasHeight) {
+export function draw(context, frequencyData, waveformData, canvasWidth, canvasHeight, fillColor) { // Added fillColor
     context.clearRect(0, 0, canvasWidth, canvasHeight);
 
     const barWidth = (canvasWidth / frequencyData.length) * 2.5;
     let barHeight;
     let x = 0;
 
-    context.fillStyle = '#FFA500';
+    context.fillStyle = fillColor; // Used fillColor
 
     for (let i = 0; i < frequencyData.length; i++) {
         barHeight = frequencyData[i];
